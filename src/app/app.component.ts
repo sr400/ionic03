@@ -17,6 +17,17 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+
+      var notificationOpenedCallback = function(jsonData) {
+        //console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+        alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+      };
+  
+      window["plugins"].OneSignal
+        //.startInit("YOUR_APPID", "YOUR_GOOGLE_PROJECT_NUMBER_IF_ANDROID")
+        .startInit("148050e6-ec4f-4ce2-bc27-2c40fa3ca702", "979800731935")
+        .handleNotificationOpened(notificationOpenedCallback)
+        .endInit();      
     });
   }
 }
